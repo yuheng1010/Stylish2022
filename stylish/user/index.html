@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>stylish.index</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <header>
+
+        <div class="ban1" width="100%">
+            <img src="./icon/logo.png" id="logo" width='258px' ;height='48px' onclick="showAll(event)">
+            <div class="category">
+                <a id="women" name="women" href="javascript:void(0);" onclick="cate('women')">女&emsp;裝</a>
+                <font>|</font>
+                <a id="men" name="men" href="javascript:void(0);" onclick="cate('men')">男&emsp;裝</a>
+                <font>|</font>
+                <a id="other" name="accessories" href="javascript:void(0);" onclick="cate('accessories')">配&emsp;件</a>
+            </div>
+
+            <div class="search" width="100%">
+                <input type="text" id="search_bar" style="border-radius: 40px">
+                <input type="image" id="search_btn" onclick='display()' src="./icon/search.png"
+                    style="height: 44px;width:44px">
+            </div>
+            <input type="image" src="./icon/cart.png" id="cart" width='44px' ;height='44px'>
+            <input type="image" src="./icon/member.png" id="profile" width='48px' ;height='44px'>
+        </div>
+        <div class="scroll">
+            <div class="smallCate">
+                <a id="womenS" href="javascript:void(0);" onclick="cate('women')" value="women">女&emsp;裝</a>
+                <font>|</font>
+                <a id="menS" href="javascript:void(0);" onclick="cate('men')" value="men">男&emsp;裝</a>
+                <font>|</font>
+                <a id="otherS" href="javascript:void(0);" onclick="cate('accessories')" value="accessories">配&emsp;件</a>
+            </div>
+        </div>
+    </header>
+    <!-- <img id="sea" src="./icon/green.jpg" width='100%'> -->
+
+    <div id="sea" width="100%" height="140px">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="./icon/green.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block ">
+                       
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="./icon/scroll_mt2.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                       
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="./icon/scroll_mt3.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container ">
+        <div class="row justify-content-start"></div>
+    </div>
+
+    <footer>
+        <nav class="nav">
+            <div class="info">
+                <a class="nav-link" href="#">關於STYLiSH</a>
+                <font>|</font>
+                <a class="nav-link" href="#">服務條款</a>
+                <font>|</font>
+                <a class="nav-link" href="#">隱私政策</a>
+                <font>|</font>
+                <a class="nav-link" href="#">聯絡我們</a>
+                <font>|</font>
+                <a class="nav-link" href="#">FAQ</a>
+            </div>
+            <div class="info2">
+                <div class="rI1"><a class="nav-link" href="#">關於STYLiSH</a><a class="nav-link" href="#">服務條款</a><a
+                        class="nav-link" href="#">隱私政策</a></div>
+                <div class="rI1"> <a class="nav-link" href="#">聯絡我們</a><a class="nav-link" href="#">FAQ</a></div>
+                <input type="image" id="line" src="./icon/line.png" style="height: 20px;width:20px">
+                <input type="image" id="fb" src="./icon/facebook.png" style="height: 20px;width:20px">
+                <input type="image" id="twitter" src="./icon/twitter.png" style="height: 20px;width:20px">
+            </div>
+            <div class="navicon">
+                <input type="image" id="line" src="./icon/line.png" style="height: 44px;width:44px">
+                <input type="image" id="fb" src="./icon/facebook.png" style="height: 44px;width:44px">
+                <input type="image" id="twitter" src="./icon/twitter.png" style="height: 44px;width:44px">
+            </div>
+            <small style="color: darkgray;size: 5px;">&copy;2018. All rights reserved.</small>
+        </nav>
+        <div class="menu">
+            <div class="m1">
+                <img src="./icon/cart-mobile.png" height="44px" width="44px">
+                <a id="cartB" href="">購物車</a>
+            </div>
+            <font size="6">|</font>
+            <div class="m1">
+                <img src="./icon/member-mobile.png" height="44px" width="44px">
+                <a id="member" href="">會員</a>
+            </div>
+
+        </div>
+    </footer>
+</body>
+<script>
+    var np;
+    var ap;
+    var url;
+    var n = 1;
+    function display() {
+        var btn = document.getElementById('search_bar');
+        btn.style.display = 'block';
+        btn.style.width = '100%';
+    }
+
+    var input = document.querySelector("#search_bar");
+    input.addEventListener('keydown', showKey);
+    function showKey(e) {
+        switch (e.keyCode) {
+            case 13:
+                console.log('Enter');
+                console.log(input.value);
+                document.querySelector(".row").innerHTML = '';
+
+                fetch('http://localhost:8000/api/v1/products/search?paging=0&keyword=' + input.value, { method: "GET", headers: { 'Content-Type': 'application/json; charset=UTF-8' } })
+                    .then(res => {
+                        return res.json();
+                    }).then(result => {
+                        var r = JSON.parse(result.list);
+                        console.log(result);
+                        console.log(r)
+                        inhtml(r)
+                    })
+
+        }
+    }
+    function cate(e) {
+        document.querySelector(".row").innerHTML = '';
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        n = 0
+        ap = 0
+        
+        fetch('http://localhost:8000/api/v1/products/cate?cate=' + e + '&paging=0', { method: "GET", headers: { 'Content-Type': 'application/json; charset=UTF-8' } })
+            .then(res => {
+                return res.json();
+            }).then(result => {
+                var r2 = JSON.parse(result.list);
+                inhtml(r2)
+                var body = document.querySelector(".row");
+                np = result.next_paging;
+                ap = result.all_paging;
+                console.log('catetest')
+                n=1
+                url = 'http://localhost:8000/api/v1/products/cate?cate=' + e + '&paging='
+                //  $(window).scroll(function () {
+            })
+
+    }
+
+    function run(){
+        const params = new URLSearchParams(document.location.search);
+        const s = params.get("cate");
+        if(s==="women"){
+            // window.location.href="http://localhost:8000/index.html"
+            cate('women')
+        }else if(s==='men'){
+            cate('men')
+        }else if(s==='accessories'){
+            cate('accessories')
+        }else{
+            showAll(event)
+        }
+    }
+    window.onload = run()
+    function showAll(event) {
+        
+        n = 1
+        document.querySelector(".row").innerHTML = '';
+        fetch('http://localhost:8000/api/v1/products?paging=0', { method: "GET", headers: { 'Content-Type': 'application/json; charset=UTF-8' } })
+            .then(res => {
+                return res.json();
+            }).then(result => {
+                var r2 = JSON.parse(result.list);
+                inhtml(r2)
+                var body = document.querySelector(".row");
+                np = result.next_paging;
+                ap = result.all_paging;
+                url = 'http://localhost:8000/api/v1/products?paging='
+                //window.removeEventListener('scroll', scrollIn)
+
+
+            })
+    }
+
+    function inhtml(re) {
+        var body = document.querySelector(".row");
+        for (var i = 0; i < re.length; i++) {
+            body.innerHTML += ' <div class="col-6 col-xl-4 d-block gx-1 ">\
+                                <a  href="http://localhost:8000/detail.html?id='+re[i].id+'"><input type="image" id="p1" class=" img-fluid" src="'+ re[i].img + '"></a>\
+                                <div class="des">\
+                                <input type="image" class="img-fluid" src="./icon/color.png" width="23%" height="8%">\
+                                <font size="3">'+ re[i].pname + '</font>\
+                                <font size="3">'+ 'TWD.' + re[i].pprice + '</font>\
+                                </div></div>'
+        }
+    }
+
+    function scrollIn() {
+        var winHeight = $(window).height();
+        var timeout = false;
+        var docTop = $(document).scrollTop();
+        var contentHeight = $(".row").height();
+
+        console.log(winHeight)
+        console.log(docTop)
+        console.log(contentHeight)
+        console.log(n)
+        console.log(ap)
+
+        if (timeout) { clearTimeout(timeout); }
+        timeout = setTimeout(function () {
+            if (docTop + winHeight >= contentHeight - 3) {
+                if (n < ap) {
+                    fetch(url + n, { method: "GET", headers: { 'Content-Type': 'application/json; charset=UTF-8' } })
+                        .then(res => {
+                            return res.json();
+                        }).then(result => {
+                            np = result.next_paging;
+                            console.log(result)
+                            var rnext = JSON.parse(result.list);
+                            inhtml(rnext);
+                        }
+                        )
+                }
+                n++;
+            }
+        }, 100);
+    }
+    window.addEventListener('scroll', scrollIn)
+
+    // var myCarousel = document.querySelector('#carouselExampleDark')
+    // var carousel = new bootstrap.Carousel(myCarousel)
+  
+</script>
+
+</html>

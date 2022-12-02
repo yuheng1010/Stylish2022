@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<head>
+    <title>pay</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <form>
+        
+        <link rel="stylesheet" href="./checkout.css">
+        <div class="form-group">
+            <label for="name">姓名</label>
+            <div><input class="form-control" id="name" name="name"></div>
+            <label for="phone">電話</label>
+            <div><input class="form-control" id="phone" name="phone"></div>
+            <label for="address">地址</label>
+            <div><input class="form-control" id="address" name="address"></div>
+            <label for="mail">信箱</label>
+            <div><input type="email" class="form-control" id="mail" name="mail" placeholder="Email"></div>
+            <div id="time" name="time">
+                <label for="time">時間</label>
+                <br>
+                <input type="radio" id="time" name="time" value="8~12" />8~12
+                <input type="radio" id="time" name="time" value="13~17" />13~17
+                <input type="radio" id="time" name="time" value="18~21" />18~21
+                <br>
+            </div>
+        </div>
+        <div class="form-group card-number-group">
+            <br>
+            <label for="card-number">卡號</label>
+            <div class="tpfield" id="card-number" name="card-number"></div>
+        </div>
+        <div class="form-group expiration-date-group">
+            <label for="card-expiration-date">卡片到期日</label>
+            <div class="tpfield" id="card-expiration-date" name="card-expiration-date"></div>
+        </div>
+        <div class="form-group ccv-group">
+            <label for="card-ccv">卡片後三碼</label>
+            <div class="tpfield" id="card-ccv" name="card-ccv"></div>
+        </div>
+        <button onclick="onSubmit(event)" class="btn btn-default">Pay</button>
+    </form>
+    <div id="ajax"></div>
+    <script src="https://js.tappaysdk.com/tpdirect/v5.13.1"></script>
+    <script>
+        TPDirect.setupSDK(12348, 'app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF', 'sandbox')
+        var fields = {
+            number: {
+                element: '#card-number',
+                placeholder: '**** **** **** ****'
+            },
+            expirationDate: {
+                element: document.getElementById('card-expiration-date'),
+                placeholder: 'MM / YY'
+            },
+            ccv: {
+                element: '#card-ccv',
+                placeholder: 'ccv'
+            }
+        }
+        TPDirect.card.setup({
+            fields: fields,
+            styles: {
+                'input': {
+                    'color': 'gray'
+                },
+                '.valid': {
+                    'color': 'green'
+                },
+                '.invalid': {
+                    'color': 'red'
+                },
+                '@media screen and (max-width: 400px)': {
+                    'input': {
+                        'color': '#2b542c'
+                    }
+                }
+            },
+            isMaskCreditCardNumber: true,
+            maskCreditCardNumberRange: {
+                beginIndex: 6,
+                endIndex: 11
+            }
+        })
+        TPDirect.card.onUpdate(function (update) {
+            if (update.canGetPrime) {
+                submitButton.removeAttribute('disabled')
+            } else {
+                submitButton.setAttribute('disabled', true)
+            }
+
+            var newType = update.cardType === 'unknown' ? '' : update.cardType
+            $('#cardtype').text(newType)
+            if (update.status.number === 2) {
+                setNumberFormGroupToError('.card-number-group')
+            } else if (update.status.number === 0) {
+                setNumberFormGroupToSuccess('.card-number-group')
+            } else {
+                setNumberFormGroupToNormal('.card-number-group')
+            }
+
+            if (update.status.expiry === 2) {
+                setNumberFormGroupToError('.expiration-date-group')
+            } else if (update.status.expiry === 0) {
+                setNumberFormGroupToSuccess('.expiration-date-group')
+            } else {
+                setNumberFormGroupToNormal('.expiration-date-group')
+            }
+            if (update.status.ccv === 2) {
+                setNumberFormGroupToError('.ccv-group')
+            } else if (update.status.ccv === 0) {
+                setNumberFormGroupToSuccess('.ccv-group')
+            } else {
+                setNumberFormGroupToNormal('.ccv-group')
+            }
+        })
+   
+        function onSubmit(event) {
+            event.preventDefault()
+            const tappayStatus = TPDirect.card.getTappayFieldsStatus()
+            if (tappayStatus.canGetPrime === false) {
+                alert('can not get prime')
+                return
+            }
+            var prime;
+            TPDirect.card.getPrime((result) => {
+                if (result.status !== 0) {
+                    alert('get prime error ' + result.msg)
+                    return
+                }
+                prime = result.card.prime;
+                var name = document.getElementById('name').value;
+                var mail = document.getElementById('mail').value;
+                var address = document.getElementById('address').value;
+                var time = document.querySelector('input[name="time"]:checked').value;
+                console.log(time);
+                var phone = document.getElementById('phone').value;
+                var header = { 'Content-Type': 'application/json; charset=UTF-8' };
+                alert('get prime 成功,prime: ' + result.card.prime)
+                fetch('http://localhost:8000/pay-by-prime', {
+                    method: 'POST',
+                    headers: header,
+                    body: JSON.stringify({ 'prime': prime, 'name': name, 'mail':mail ,'address':address, 'time':time ,'phone':phone})
+
+                })
+                    .then(res => {
+                        return res.json();
+                    }).then(result => {
+                        console.log(result);
+                    });
+            })
+
+        }
+
+    </script>
+</body>

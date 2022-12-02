@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+</head>
+
+<body>
+    <link rel="stylesheet" href="./product.css">
+    <form enctype="multipart/form-data" action="/upload" method="POST" name="file">
+        <section>
+            <br><br>
+            <h1>商品新增</h1>
+            <label for="pID">商品 ID:</label>
+            <br>
+            <input type="text" name="pID" id="pID" style=width:50px/>
+            <br>
+            <label for="pName">商品名稱:</label>
+            <br>
+            <input type="text" name="pName" id="pName" style=width:50px/>
+            <br>
+            <label for="pPrice">商品價格:</label>
+            <br>
+            <input type="text" name="pPrice" id="pPrice" style=width:50px/>
+            <br>
+            <label for="pCategory">商品種類:</label>
+            <br>
+            <div id="pCategory" name="pCategory">
+                <input type="radio" id="pCategory" name="pCategory" value="men" />men
+                <input type="radio" id="pCategory" name="pCategory" value="women" />women
+                <input type="radio" id="pCategory" name="pCategory" value="accessories" />accessories
+                <br>
+            </div>
+            <label for="des1">商品細項:</label>
+            <br>
+            <textarea name="des1" id="des1"></textarea>
+            <br>
+            <label for="des2">商品描述:</label>
+            <br>
+            <textarea name="des2" id="des2"></textarea>
+            <br>
+            <select name="size" id="size">
+                <option value=" ">尺寸</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+            </select>
+            <br>
+            <label for="num">商品數量:</label>
+            <br>
+            <input type="text" name="num" id="num" style=width:50px/>
+            <br>
+            <label for="color">顏色:</label>
+            <input type="color" name="color" id="color" />
+            <br>
+            <label for="img">商品圖片:</label>
+            <br>
+            <input type="file" id="img" name="img" accept="image/*">
+            <br><br>
+            <button id="add" type="submit">新增</button>
+
+            <div id="ajax"></div>
+        </section>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+.iDetail{
+    align-self: center;
+    padding:30px;
+    
+}
+.littlePic{
+    padding: 7px;
+}
+.number{
+    width: 70px;
+    height: 30px;
+    border-radius: 7px;
+}
+.number option{
+    width: 30px;
+    height: 10px;
+}
+#nameR,#emailR,#phoneR,#addressR{
+    padding: 10px;
+    white-space: nowrap;
+}
+#sojian{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+    color:sienna;
+    white-space: nowrap;
+}
+#proPho{
+    margin:0;
+}
+#timeCheck{
+    margin-left: 9px;
+}
+@media (max-width: 1280px) {
+    #numT,#unitT,#sumT {
+        display:none;
+    }
+}

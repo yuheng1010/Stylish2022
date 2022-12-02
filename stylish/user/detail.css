@@ -1,0 +1,402 @@
+* {
+    margin: 0%;
+    /* position: relative; */
+}
+.btns{
+    display: flex;
+    position: relative;
+}
+ul,
+li {
+    list-style: none;
+}
+.btn-numbox {
+    position: absolute;
+    overflow: hidden;
+    display: flex   ;
+    justify-content:start;
+   margin-top: 10px;
+
+}
+
+.btn-numbox li {
+    position: relative;
+    float: left;
+}
+
+.btn-numbox li .number{
+    float:left;
+    left: 0;
+    margin-left: auto;
+    font-size: 16px;
+    color: #808080;
+
+}
+
+.btn-numbox .count {
+    
+    overflow: hidden;
+    margin: 0 10px 0 -40px;
+}
+
+.btn-numbox .count .num-jian,
+.input-num,
+.num-jia {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    border: 1px solid #e6e6e6;
+}
+
+/* 
+.btn-numbox .count .num-jia {
+    margin-left: 1px;
+} */
+
+.btn-numbox .count .input-num {
+    width: 58px;
+    height: 26px;
+    color: #333;
+    border-left: 0;
+    border-right: 0;
+}
+button{
+    border:none;
+    outline: none;
+}
+#num-jua,#num-jian {
+    color:black;
+    border:none;
+    outline: none;
+}
+header{
+    height: 140px;
+    width: 100%;
+    z-index: 9999;
+    position: fixed;
+    top: 0%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+}
+body{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+footer{
+    margin-top: 40%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    bottom: 0%;
+}
+.detail{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.ban1 {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 100px;
+    width: 100%;
+    justify-content: flex-end;
+    
+}
+.search {
+    margin-top: 28px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: row;
+    float: right;
+    margin-bottom: 28px;
+}
+
+.category a{
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+}
+.info2 a{
+    text-decoration: none;
+    color: white;
+}
+.info2 :hover{
+    text-decoration: none;
+    color: rgb(196, 190, 132);
+}
+.menu a{
+    text-decoration: none;
+    color: white;
+}
+.menu a:hover{
+    text-decoration: none;
+    color: rgb(180, 141, 12);
+}
+
+.category a:hover{
+    text-decoration: none;
+    color: rgb(180, 141, 12);
+}
+.category{
+    position: absolute;
+    left: 375px;
+}
+.scroll {
+    flex-direction:row;
+    display: flex;
+    width: 100%;   
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+    height: 40px;
+}
+#p1.img-fluid{
+    width: 100%;
+    height: auto;
+}
+.container{
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    margin-top: 70px;
+    width: 100%;
+    margin-bottom: 40%;
+}
+
+.des{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+.smallCate{
+    display: none;
+}
+.info{
+    align-items: center;
+    font-size: 12px;
+    display: flex;
+}
+.info2{
+    display: none;
+}
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    height: 100px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    color:azure
+}
+.nav-link{
+    align-items: center;
+    color: azure;
+    padding: 20px;
+}
+.navicon{
+    display: flex;
+    align-items: center;
+    margin-left: 100px; 
+    
+}
+.rI1{
+    display:none ;
+}
+.row{
+    display: flex;
+    justify-content:start;
+    justify-content: left;
+    justify-items: start;
+    
+}
+.menu{
+    display: none;
+}
+#search_bar {
+    display: block;
+    font-size: 20px;
+    height: 44px;
+    width: 214px;
+}
+#sea{
+    margin-top:140px
+}
+#search_btn {
+   
+    position: absolute;
+    right: 0%;
+    line-height: 44px;
+}
+#womenS,#menS,#otherS{
+    display: none;
+   
+} 
+#pics{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#ps1{
+    padding:20px;
+}
+#logo {
+    margin-top: 26px;
+    margin-right: auto;
+    padding-left: 60px;
+    margin-bottom: 26px;
+}
+
+#cart {
+    display: block;
+    margin-top: 28px;
+    margin-right: 10px;
+    margin-bottom: 28px;
+}
+
+#profile {
+    display: block;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    margin-right: 30px;
+}
+#line{
+    margin-right: 30px;
+}
+#fb{
+    margin-right: 30px;
+}
+#twitter{
+    margin-right: 30px;
+} 
+.detailsAll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-left: 130px; */
+}
+    
+    
+@media (max-width: 1280px) {
+    #profile ,#cart, .category,.nav-item,#copyR,.info,.navicon{
+        display: none;
+      }
+    #search_bar{
+        display: none;
+ 
+    }
+    .smallCate{
+        display: flex;
+        justify-content: space-between;
+        color:azure;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+    .nav{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height:auto;
+        margin-bottom: 20px;
+        height: 220px;
+        position: relative;
+    }
+    #womenS,#menS,#otherS{
+        display: block;
+        color: white;
+        text-decoration: none;
+        width: 33.3%;
+    } 
+    #line,#fb,#twitter{
+        margin-top: 41px;
+        margin-right: 14px;
+    }
+    .ban1{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+    }
+    .search{
+        width: 100%;
+        margin: 0;
+        position:absolute;
+        right: 0%;
+    }
+    #logo {
+      margin: auto;
+    }
+    #search_btn{
+        z-index: 10001;
+        margin-right: 14px;
+    }
+    .info2{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        top: 10%;
+        font-size: 12px;
+        text-align: start;
+        
+    }
+    .rI1{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+    .menu{
+        display: flex;
+        position: fixed;
+        bottom: 0%;
+        flex-direction: row;
+        height: 80px;
+        background-color: black;
+        width: 100%;   
+        justify-content: space-evenly;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+    }
+    
+    .m1{
+        display: flex;
+        align-items: center;
+    }
+    #sea{
+        margin-top:140px
+    }
+    small{
+        margin-top: 30px;
+    }
+    #womenS:hover{
+        text-decoration: none;
+        color: rgb(180, 141, 12);
+    }
+    #menS:hover{
+        text-decoration: none;
+        color: rgb(180, 141, 12);
+    }
+    #otherS:hover{
+        text-decoration: none;
+        color: rgb(180, 141, 12);
+    }
+}

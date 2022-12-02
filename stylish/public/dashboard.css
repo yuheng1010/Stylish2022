@@ -1,0 +1,19 @@
+.first{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+}
+.second{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#piepart{
+    margin-left:400px;
+}
+
+#totalRev{
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

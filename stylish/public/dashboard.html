@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./dashboard.css">
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    <div class="first">
+        <div id="totalRev"></div>
+        <div id="piepart">
+       
+            <div id="pie"></div>
+        </div>
+    </div>
+    <div class="second">
+        <div id="histograms"></div>
+        <div id="bar"></div>
+    </div>
+</head>
+
+<script>
+    window.onload = () => {
+        fetch('http://localhost:8000/getOrderData', { method: "GET", headers: { 'Content-Type': 'application/json; charset=UTF-8' } })
+            .then(res => {
+                return res.json();
+            }).then(result => {
+                let rev = 0;
+                for (var i = 0; i < result.length; i++) {
+                    rev += JSON.parse(result[i].detail)['total'];
+                }
+                document.getElementById('totalRev').innerText = 'Total Revenue :\n' + rev;
+                return rev;
+            })
+    }
+
+
+    fetch('http://localhost:8000/getOrderData', { method: "GET", headers: { 'Content-Type': 'application/json; charset=UTF-8' } })
+        .then(res => {
+            return res.json();
+        }).then(result => {
+            var temp = [];
+            var pricey = [];
+            var pricex = [];
+            var total = 0;
+            var all = {}
+
+            for (var i = 0; i < result.length; i++) {
+                let list = JSON.parse(result[i].detail)['list'][0];
+                pricey.push(JSON.parse(result[i].detail)['list'][0]['qty'])
+                pricex.push(JSON.parse(result[i].detail)['list'][0]['price'])
+                total += parseInt(JSON.parse(result[i].detail)['list'][0]['qty'])
+                // all.push({id:list['id'],total:total+list['qty'],S:0,M:0,L:0})
+                if (!all[JSON.parse(result[i].detail)['list'][0]['id']]) {
+                    all[JSON.parse(result[i].detail)['list'][0]['id']] = parseInt(JSON.parse(result[i].detail)['list'][0]['qty'])
+                } else {
+                    all[JSON.parse(result[i].detail)['list'][0]['id']] += parseInt(JSON.parse(result[i].detail)['list'][0]['qty'])
+                }
+
+                if (temp.indexOf(JSON.parse(result[i].detail)['list'][0]['color']['name']) == -1) {
+                    temp.push(JSON.parse(result[i].detail)['list'][0]['color']['name'])
+                    temp.push(JSON.parse(result[i].detail)['list'][0]['color']['code'])
+                    temp.push(JSON.parse(result[i].detail)['list'][0]['qty'])
+
+                } else {
+                    temp[temp.indexOf(JSON.parse(result[i].detail)['list'][0]['color']['name']) + 2] += parseInt(JSON.parse(result[i].detail)['list'][0]['qty']);
+                }
+            }
+            var value = []
+            var label = []
+            var color = []
+            for (var j = 0; j < temp.length; j += 3) {
+                label.push(temp[j])
+                color.push(temp[j + 1])
+                value.push(temp[j + 2])
+            }
+            var data = [{
+                values: value,
+                labels: label,
+                type: 'pie',
+                marker: {
+                    colors: color
+                }
+            }];
+            var layout = {
+                height: 400,
+                width: 500,
+                title: "Product sold percentage in different colors",
+            };
+            Plotly.newPlot(document.getElementById('pie'), data, layout);
+
+            for (var j = 0; j < total; j++) {
+                pricey[j] = pricex[j]
+            }
+            var traceH = {
+                x: pricey,
+                type: 'histogram',
+                line: {
+                    width: 1
+                },
+                xbins: {
+                    size: 100,
+                }
+
+            };
+            var layoutH = {
+                height: 400,
+                width: 700,
+                barmode: "overlay",
+                title: "Product sold quantity in different price range",
+                xaxis: { title: "Price Range" },
+                yaxis: { title: "Quantity" }
+            };
+            var dataH = [traceH];
+            Plotly.newPlot(document.getElementById('histograms'), dataH, layoutH);
+            console.log(all)
+            var top = []
+            var top5id=[]
+            top.push(Object.values(all).sort())
+
+            console.log(Object.values(all)[0])
+            for (var i = 5; i < 10; i++) {
+                top5id.push(Object.keys(all)[Object.values(all).indexOf(top[0][i])])
+            }
+            console.log(top5id)
+            var S = [0,0,0,0,0]
+            var M = [0,0,0,0,0]
+            var L = [0,0,0,0,0]
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j <  top5id.length; j++) {
+                    if ( top5id[j] == parseInt(JSON.parse(result[i].detail)['list'][0]['id'])) {
+                        if (JSON.parse(result[i].detail)['list'][0]['size'] == 'S') {
+                            S.splice(j, 1, S[j]+=JSON.parse(result[i].detail)['list'][0]['qty'])
+                        }
+                        if (JSON.parse(result[i].detail)['list'][0]['size'] == 'M') {
+                            M.splice(j, 1, M[j]+=JSON.parse(result[i].detail)['list'][0]['qty'])
+                        }
+                        if (JSON.parse(result[i].detail)['list'][0]['size'] == 'L') {
+                            L.splice(j, 1, L[j]+=JSON.parse(result[i].detail)['list'][0]['qty'])
+                        }
+                    }
+
+                }
+
+            }
+ 
+            var xLabel=[]
+            top5id=top5id.reverse()
+            for(var i=0;i<Object.keys(all).length;i++){
+                xLabel.push('productID '+ top5id[i])
+            }
+            var trace1 = {
+                x: xLabel,
+                y: S.reverse(),
+                name: 'S',
+                type: 'bar'
+            };
+
+            var trace2 = {
+                x: xLabel,
+                y: M.reverse(),
+                name: 'M',
+                type: 'bar'
+            };
+
+            var trace3 = {
+                x: xLabel,
+                y: L.reverse(),
+                name: 'L',
+                type: 'bar'
+            };
+            var data = [trace1, trace2,trace3];
+
+            var layout = {
+                barmode: 'stack',
+                height: 400,
+                width: 700,
+                title: "Quantity of top 5 sold products in different sizes",
+                yaxis: { title: "Quantity" }
+            };
+
+            Plotly.newPlot(document.getElementById('bar'), data, layout);
+
+        })
+
+
+
+
+
+</script>
+
+</html>
